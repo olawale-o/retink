@@ -1,0 +1,23 @@
+.login {
+  width: 100%;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.field {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem;
+  color: #525F7F;
+  letter-spacing: 2.5px;
+}
+
+.login .btn__primary {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  cursor: pointer;
+}
