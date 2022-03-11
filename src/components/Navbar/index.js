@@ -1,9 +1,13 @@
+import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AccessKey } from '../Svg';
 import './style.css';
 
+import AuthContext from '../../context';
+
 const Navbar = () => {
+  const { user } = React.useContext(AuthContext);
   return  (
     <header className="header">
       <nav className="nav">
@@ -23,24 +27,35 @@ const Navbar = () => {
             <Link to="/#" className="links__link">About us</Link>
           </li>
         </ul>
-        <ul className="buttons">
-          <li className="button__item">
-            <Link to="login" className="btn__link btn__primary">
-              <span>
-                <AccessKey fillColor="#fff" />
-              </span>
-              <span>Login</span>
-            </Link>
-          </li>
-          <li className="button__item">
-            <a href="/#" className="btn__link btn__outline">
-              <span>
-                <AccessKey fillColor="#3D55DF" />
-              </span>
-              <span>Register</span>
-            </a>
-          </li>
-        </ul>
+        {user && (
+          <ul className="buttons">
+            <li className="button__item">
+              <button className="btn__link btn__primary" onClick={() => {}}>
+                <span>Log out</span>
+              </button>
+            </li>
+          </ul>
+        )}
+        {!user && (
+          <ul className="buttons">
+            <li className="button__item">
+              <Link to="/login" className="btn__link btn__primary">
+                <span>
+                  <AccessKey fillColor="#fff" />
+                </span>
+                <span>Login</span>
+              </Link>
+            </li>
+            <li className="button__item">
+              <a href="/#" className="btn__link btn__outline">
+                <span>
+                  <AccessKey fillColor="#3D55DF" />
+                </span>
+                <span>Register</span>
+              </a>
+            </li>
+          </ul>
+        )}
       </nav>
     </header>
   );
