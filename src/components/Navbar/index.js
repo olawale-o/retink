@@ -44,7 +44,7 @@ const Navbar = () => {
         {!user && (
           <ul className="buttons">
             <li className="button__item">
-              <Link to="/login" className="btn__link btn__primary">
+              <Link to="/auth/login" className="btn__link btn__primary">
                 <span>
                   <AccessKey fillColor="#fff" />
                 </span>
@@ -52,7 +52,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="button__item">
-              <a href="/#" className="btn__link btn__outline">
+              <a href="/auth/register" className="btn__link btn__outline">
                 <span>
                   <AccessKey fillColor="#3D55DF" />
                 </span>
