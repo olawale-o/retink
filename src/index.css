@@ -36,3 +36,10 @@ li {
   color: #3D55DF;
 }
 
+.error {
+  font-size: 1.8rem;
+  margin-bottom: 1.9rem;
+  color: red;
+  display: grid;
+  place-items: center;
+}

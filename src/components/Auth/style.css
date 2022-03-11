@@ -14,10 +14,16 @@
   padding: 1rem;
   color: #525F7F;
   letter-spacing: 2.5px;
+  outline: none;
+  border: 1px solid #E1E8ED;
 }
 
 .login .btn__primary {
   padding-top: 1rem;
   padding-bottom: 1rem;
   cursor: pointer;
+}
+
+.input:focus {
+  border-color: #525F7F;
 }
