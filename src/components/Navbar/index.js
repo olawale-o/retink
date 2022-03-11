@@ -1,13 +1,15 @@
 import React from 'react';
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase-config';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AccessKey } from '../Svg';
 import './style.css';
-
 import AuthContext from '../../context';
 
+
 const Navbar = () => {
-  const { user } = React.useContext(AuthContext);
+  const { user, onUpdateUser } = React.useContext(AuthContext);
   return  (
     <header className="header">
       <nav className="nav">
@@ -30,7 +32,10 @@ const Navbar = () => {
         {user && (
           <ul className="buttons">
             <li className="button__item">
-              <button className="btn__link btn__primary" onClick={() => {}}>
+              <button className="btn__link btn__primary" onClick={() => {
+                signOut(auth);
+                onUpdateUser(null);
+              }}>
                 <span>Log out</span>
               </button>
             </li>
