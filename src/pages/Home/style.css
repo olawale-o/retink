@@ -32,12 +32,13 @@
   font-size: 1.6rem;
   font-weight: 800;
   color: #666;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .service__cards {
   width: 80%;
   margin: 0 auto;
+  position: relative;
 }
 
 .service__card {
