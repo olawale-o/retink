@@ -5,7 +5,7 @@ import Form from '../Form';
 const Register = () => {
   const { setEmail, setPassword, register, authError} = React.useContext(AuthContext);
   return (
-    <div className="login">
+    <div className="auth">
       <Form
         onSubmit={register}
         error={authError}

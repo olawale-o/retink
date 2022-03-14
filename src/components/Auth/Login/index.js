@@ -5,7 +5,7 @@ import Form from '../Form';
 const Login = () => {
   const { login, setEmail, setPassword } = React.useContext(AuthContext);
   return (
-    <div className="login">
+    <div className="auth">
       <Form
         onSubmit={login}
         btnName="Login"
