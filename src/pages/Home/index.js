@@ -5,7 +5,7 @@ const Home = () => (
     <div className="container">
       <div className="hero">
         <div className="hero__left">
-          <h1 className="hero__title">What are you looking for?</h1>
+          <h6 className="hero__title">What are you looking for?</h6>
           <div className="card">
             <div></div>
             <div className="right__card">
@@ -36,6 +36,32 @@ const Home = () => (
       </div>
       <div className="character">
         <img src={character} alt="character" />
+      </div>
+    </div>
+
+    <div className="services">
+      <div className="container">
+        <h1 className="service__title">Our Services</h1>
+        <ul className="service__cards">
+          <div className="service__card">
+            <div className="img__box">
+              <img src="https://retinkmedia.com/wp-content/uploads/2022/02/content-1.png" alt="digital marketing" />
+            </div>
+            <h6>digital marketing</h6>
+          </div>
+          <div className="service__card">
+            <div className="img__box">
+              <img src="https://img.icons8.com/dusk/344/copy.png" alt="copy writing" />
+            </div>
+            <h6>copy writing</h6>
+          </div>
+          <div className="service__card">
+            <div className="img__box">
+              <img src="https://img.icons8.com/external-smashingstocks-outline-color-smashing-stocks/344/external-logo-design-art-and-design-and-photography-smashingstocks-outline-color-smashing-stocks.png" alt="graphics design" />
+            </div>
+            <h6>graphics design</h6>
+          </div>
+        </ul>
       </div>
     </div>
   </div>
