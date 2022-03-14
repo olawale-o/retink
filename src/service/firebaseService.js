@@ -20,7 +20,7 @@ export const logInWithEmailAndPassword = async (email, password) => {
     const { user } = await signInWithEmailAndPassword(auth, email, password);
     return user;
   } catch(e) {
-    throw new Error(e);
+    throw new Error(e.code);
   }
 };
 

@@ -1,23 +1,22 @@
 import React from 'react';
+import { useQuery } from 'react-query';
 import { collection, getDocs } from "firebase/firestore";
 import './style.css';
-import { store } from '../../components/firebase-config';
+import { store } from '../../firebase-config';
 
 import character from '../../assets/character.png';
 import { Hat } from '../../components/Svg';
+const getServices = async () => {
+  const docs = [];
+  const querySnapshot = await getDocs(collection(store, "retink_services"));
+  querySnapshot.forEach((doc) => {
+    docs.push({...doc.data(), id: doc.id });
+  });
+  return docs;
+};
+
 const Home = () => {
-  const [services, setServices] = React.useState([]);
-  const [loading, setLoading] = React.useState(true);
-  React.useEffect(() => {
-    const fetchData = async () => {
-      const querySnapshot = await getDocs(collection(store, "retink_services"));
-      querySnapshot.forEach((doc) => {
-        setServices(initialDoc => [...initialDoc, { ...doc.data(), id: doc.id }]);
-      });
-      setLoading(false);
-    };
-    fetchData();
-  }, []);
+  const { isLoading, data } = useQuery('services', getServices);
 
   return (
     <div className="home">
@@ -60,8 +59,8 @@ const Home = () => {
         <div className="container">
           <h1 className="service__title">Our Services</h1>
           <ul className="service__cards">
-            {loading && <div className="loading" />}
-            {services && services.map((service) => (
+            {isLoading && <div className="loading" />}
+            {data && data.map((service) => (
               <li className="service__card" key={service.id}>
                 <div className="img__box">
                   <img src={service.img_url} alt={service.name} />
