@@ -9,12 +9,10 @@
 
 html {
   font-size: 10px;
-  height: 100%;
 }
 
 body {
   font-size: 62.5%;
-  height: 100%;
   font-family: 'Open Sans', sans-serif;
   line-height: 21px;
 }
@@ -42,4 +40,16 @@ li {
   color: red;
   display: grid;
   place-items: center;
+}
+
+
+@media screen and (min-width: 968px)  {
+  .lg__card {
+    width: 80%;
+  }
+  
+  .sm__card {
+    width: 40%;
+    background: yellow;
+  }
 }
