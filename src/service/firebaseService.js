@@ -29,6 +29,6 @@ export const createUserAccount = async (email, password) => {
     const { user } = await createUserWithEmailAndPassword(auth, email, password);
     return user;
   } catch(e) {
-    throw new Error(e);
+    throw new Error(e.code);
   }
 };
