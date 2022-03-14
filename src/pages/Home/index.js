@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useQuery } from 'react-query';
 import { collection, getDocs } from "firebase/firestore";
 import './style.css';
@@ -10,7 +11,7 @@ const getServices = async () => {
   const docs = [];
   const querySnapshot = await getDocs(collection(store, "retink_services"));
   querySnapshot.forEach((doc) => {
-    docs.push({...doc.data(), id: doc.id });
+    docs.push({...doc.data(), id: doc.id});
   });
   return docs;
 };
@@ -62,10 +63,12 @@ const Home = () => {
             {isLoading && <div className="loading" />}
             {data && data.map((service) => (
               <li className="service__card" key={service.id}>
-                <div className="img__box">
-                  <img src={service.img_url} alt={service.name} />
-                </div>
-                <h6>{service.name}</h6>
+                <Link to={service.id} className="service__link">
+                  <div className="img__box">
+                    <img src={service.img_url} alt={service.name} />
+                  </div>
+                  <h6>{service.name}</h6>
+                </Link>
               </li>
             ))}
           </ul>

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
+import { Navigate, Route, Routes, useNavigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase-config';
@@ -9,6 +9,7 @@ import Auth from './pages/Auth';
 import { Login, Register } from './components/Auth';
 import Home from './pages/Home';
 import AuthContext from './context';
+import Services from './pages/Services';
 
 const queryClient = new QueryClient();
 
@@ -92,6 +93,7 @@ function App(){
           <Routes>
             <Route path="/">
               <Route index path="/" element={(<Home />)} />
+              <Route path=":id" element={(<Services />)} />
               <Route path="auth" element={(<Auth />)}>
                 <Route index path="" element={(<Login />)} />
                 <Route path="login" element={(<Login />)} />

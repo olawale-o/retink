@@ -1,6 +1,6 @@
 import React from 'react';
-import { signOut, GoogleAuthProvider } from 'firebase/auth';
-import { auth, googleProvider } from '../../firebase-config';
+import { signOut } from 'firebase/auth';
+import { auth } from '../../firebase-config';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AccessKey } from '../Svg';

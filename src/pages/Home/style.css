@@ -150,6 +150,11 @@
   margin-top: 5rem;
 }
 
+.service__link {
+  display: inline-block;
+  color: inherit;
+}
+
 .service__title {
   font-size: 4rem;
   font-weight: 800;
