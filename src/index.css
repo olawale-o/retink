@@ -71,6 +71,10 @@ li {
   cursor: pointer;
 }
 
+.action {
+  position: relative;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);
