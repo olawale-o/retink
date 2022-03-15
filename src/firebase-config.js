@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore'
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_GOOGLE_KEY,
+  apiKey: 'AIzaSyAOBEojiULbSKO68R8viRPTHa1gz-1PGEQ',
   authDomain: "riverpod-crime.firebaseapp.com",
   projectId: "riverpod-crime",
   storageBucket: "riverpod-crime.appspot.com",
