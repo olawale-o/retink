@@ -5,14 +5,12 @@ import { store } from "../../firebase-config";
 
 import './style.css';
 const getSevice = async (id) => {
-  console.log(id);
   const docRef = doc(store, "retink_services", id);
   const docSnap = await getDoc(docRef);
   
   if (!docSnap.exists()) {
     return null;
   }
-  console.log(docSnap.data());
   return docSnap.data();
 };
 
