@@ -1,7 +1,18 @@
-const Form  = ({ onSubmit, setEmail, setPassword, btnName, error }) => {
+import React from 'react';
+import AuthContext from '../../context';
+import google from '../../assets/google.png';
+const Form  = ({ onSubmit, setEmail, setPassword, btnName }) => {
+  const { continueWithGoogle, authError } = React.useContext(AuthContext);
+
   return (
     <div className="form">
-      <span className="error">{error && error}</span>
+      <span className="error">{authError && authError}</span>
+      <button type="button" onClick={continueWithGoogle} className="google__button">
+        <span className="google">
+          <img src={google} alt="google" />
+        </span>
+        <span className="btn__text">Continue with Google</span>
+      </button>
       <form onSubmit={onSubmit}>
         <div className="field">
             <input

@@ -3,111 +3,320 @@
   position: relative;
 }
 
+.hero__container {
+  position: relative;
+  background: linear-gradient(119.77deg, #EA0022 1.67%, #754DE8 116.47%);
+  overflow-x: hidden;
+}
+
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  z-index: 100;
+  padding: 0;
+}
+
+.hero__img {
+  display: block;
+  z-index: 90;
+  position: absolute;
+  top: 0%;
+  right: 10%;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__title {
+  color: #fff;
+  font-size: 3rem;
+  margin-bottom: 2.4rem;
+}
+
+.hero__left {
+  padding: 1.8rem;
+  width: 90%;
+  position: absolute;
+  top: 60%;
+  transform: translate(0, -30%);
+}
+
+.card {
+  background: #fff;
+  border-radius: 1.2rem;
+  padding: 2rem;
+  margin-bottom: 1.8rem;
+  cursor: pointer;
+  width: 80%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.hero__left .card {
+  display: grid;
+  grid-template-columns: 60px 1fr;
+}
+
+.hero__left .card .card__text {
+  grid-column-start: 2;
+  grid-column-end: 3;
+}
+
+.card:last-child {
+  margin-bottom: 0;
+}
+
+.card__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.svg {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(245, 54, 92, 0.29);
+  display: grid;
+  place-items: center;
+}
+
+.hero__right {
+  width: 50%;
+  position: absolute;
+  right: -5%;
+  top: 0%;
+  padding: 1.8rem;
+}
+
+.card__text {
+  color: #525F7F;
+  font-size: 1.3rem;
+  line-height: 124%;
+}
+
+.lg__card {
+  width: 90%;
+  background: #fff;
+  border-top-left-radius: 1.2rem;
+  border-top-right-radius: 1.2rem;
+  border-bottom-right-radius: 1.2rem;
+  padding: 1rem;
+  margin-bottom: 1.8rem;
+  position: relative;
+  animation: lg 0.5s ease-in-out 1s infinite;
+}
+
+.lg__card::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 18px solid #fff;
+  border-right: 8px solid transparent;
+  border-top: 12px solid #fff;
+  border-bottom: 20px solid transparent;
+  left: 0px;
+  bottom: -20px;
+}
+
+.sm__card {
+  background: #fff;
+  border-top-right-radius: 1.2rem;
+  border-bottom-right-radius: 1.2rem;
+  border-bottom-left-radius: 1.2rem;
+  padding: 1rem;
+  margin-left: 2rem;
+  width: 80%;
+  position: relative;
+  animation: sm 0.5s ease-in-out 1s infinite;
+}
+
+.sm__card::after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 18px solid #fff;
+  border-right: 8px solid transparent;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid #fff;
+  top: -10px;
+  left: 0px;
+}
+
+.services {
+  width: 100%;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.service__link {
+  display: inline-block;
+  color: inherit;
+}
+
+.service__title {
+  font-size: 4rem;
+  font-weight: 800;
+  color: #666;
+  margin-bottom: 4rem;
+}
+
+.service__cards {
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.service__card {
+  width: 60%;
+  min-height: 180px;
+  padding: 1.8rem;
+  margin: 0 auto;
+  margin-bottom: 1.8rem;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 7px 14px rgba(50, 50, 93, 0.1), 0px 3px 6px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.img__box {
+  width: 100%;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.img__box img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+}
+
+.service__card h6 {
+  font-size: 1.6rem;
+  text-transform: capitalize;
+  font-weight: 400;
+}
+
+.card:hover {
+  transform: translateX(10px);
+}
+
 @media screen and (min-width: 768px) {
-  .hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    background: url("../../assets/background.png");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0, 100% 63%, 0 90%);
+  .hero__container {
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 95%);
   }
 
   .hero__left {
-    margin-left: 5rem;
-    width: 45%;
-    position: absolute;
-    top: 30%;
-    transform: translate(0, -30%);
+    top: 40%;
+    width: 50%;
   }
 
   .hero__right {
-    width: 40%;
+    width: 45%;
     position: absolute;
-    right: 0%;
+    right: -8%;
     top: 5%;
   }
 
-  .hero__title {
-    color: #fff;
-    font-size: 2.5rem;
-    margin-bottom: 2.4rem;
+  .card {
+    width: 100%;
   }
 
-  .card {
-    background: #fff;
-    border-radius: 1.2rem;
-    padding: 2.4rem;
-    width: 80%;
+  .lg__card {
+    width: 85%;
+  }
+
+  .sm__card {
+    width: 70%;
+  }
+
+  .service__title {
+    font-size: 3.4rem;
+  }
+
+  .service__cards {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .img__box {
     margin-bottom: 1.8rem;
   }
 
-  .card:last-child {
-    margin-bottom: 0;
+  .img__box img {
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .service__card h6 {
+    font-size: 2rem;
   }
 
-  .card__title {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
-  }
-
-  .card__text {
-    color: #525F7F;
-    font-size: 1.3rem;
-    line-height: 124%;
-  }
-
-  .character {
-    display: none;
+  .hero__img {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 30%;
+    width: 50%;
+    transform: translate(20%, -60%);
   }
 }
 
+.btn__text {
+  font-size: 1.6rem;
+}
+
 @media screen and (min-width: 968px) {
+  .hero__container {
+    background: none;
+    clip-path: inherit;
+  }
+
   .hero {
     position: relative;
     width: 100%;
-    height: 100vh;
     background: url("../../assets/background.png");
     background-size: cover;
     background-position: right bottom;
     background-repeat: no-repeat;
-    clip-path: polygon(0 0, 100% 0, 100% 63%, 0 90%);
-  }
-
-  .hero__left {
-    margin-left: 10rem;
-    width: 40%;
-    position: absolute;
-    top: 30%;
-    transform: translate(0, -30%);
-  }
-
-  .hero__right {
-    width: 30%;
-    position: absolute;
-    right: 0%;
-    top: 5%;
-  }
-
-  .hero__title {
-    color: #fff;
-    font-size: 3rem;
-    margin-bottom: 2.4rem;
+    z-index: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 0 95%);
   }
 
   .card {
-    background: #fff;
-    border-radius: 1.2rem;
-    padding: 2.4rem;
-    width: 80%;
-    margin-bottom: 1.8rem;
+    width: 100%;
   }
 
-  .card:last-child {
-    margin-bottom: 0;
+  .hero__left {
+    margin-left: 5rem;
+    transform: translate(0, -30%);
+    width: 70%;
+  }
+
+  .hero__right {
+    right: -12%;
+  }
+
+  .lg__card {
+    width: 70%;
+  }
+
+  .sm__card {
+    width: 50%;
+  }
+
+  .hero__title {
+    font-size: 3.5rem;
+  }
+
+  .card {
+    width: 60%;
   }
 
   .card__title {
@@ -122,37 +331,77 @@
     line-height: 124%;
   }
 
-  .character {
-    display: block;
-    position: absolute;
+  .hero__img {
     top: 60%;
-    right: 35%;
-    background: transparent;
-    width: 50%;
-    transform: translate(35%, -50%);
-  }
-
-  .character img {
-    width: 100%;
-    height: 100%;
+    right: 20%;
+    z-index: 1;
   }
 }
 
 @media screen and (min-width: 1024px) {
-  .card__title {
-    font-size: 2rem;
+  .hero {
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 90%);
   }
 
-  .card__text {
-    font-size: 1.6rem;
+  .hero__img {
+    right: 25%;
   }
 
-  .character {
+}
+
+@media screen and (min-width: 1200px) {
+  .hero {
+    clip-path: polygon(0 0, 100% 0, 100% 70%, 0 95%);
+  }
+
+  .hero__left {
+    top: 35%;
+    margin-left: 5rem;
+  }
+
+  .card {
+    width: 55%;
+  }
+
+  .sm__card {
+    width: 40%;
+  }
+
+  .hero__title {
+    font-size: 4.5rem;
+    margin-bottom: 3.4rem;
+  }
+
+  .hero__img {
+    display: block;
     position: absolute;
-    top: 60%;
-    right: 35%;
-    background: transparent;
-    width: 50%;
-    transform: translate(35%, -50%);
+    top: 65%;
+    right: 22%;
+    width: 60%;
+    transform: translate(20%, -60%);
+  }
+}
+
+@keyframes lg {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, -10px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes sm {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0, 10px);
+  }
+  100% {
+    transform: translate(0, 0);
   }
 }

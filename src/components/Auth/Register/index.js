@@ -1,37 +1,14 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase-config';
 import AuthContext from '../../../context';
 import Form from '../Form';
 
 const Register = () => {
-  let navigate = useNavigate();
-  const [email, setEmail] = React.useState('');
-  const [password, setPassword] = React.useState('');
-  const [error, setError] = React.useState(null);
-  const { onUpdateUser } = React.useContext(AuthContext);
-
-  const login = async (e) => {
-    e.preventDefault();
-    try {
-      const user  = await createUserWithEmailAndPassword(auth, email, password);
-      onUpdateUser(user);
-      if (user) {
-        navigate('/', { replace: true });
-      }
-    } catch(e) {
-      if(e.code === 'auth/email-already-in-use') {
-        setError('Email already exists');
-      }
-    }
-  };
-
+  const { setEmail, setPassword, register, authError} = React.useContext(AuthContext);
   return (
-    <div className="login">
+    <div className="auth">
       <Form
-        onSubmit={login}
-        error={error}
+        onSubmit={register}
+        error={authError}
         btnName="Create"
         setEmail={setEmail}
         setPassword={setPassword}
