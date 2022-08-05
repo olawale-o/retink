@@ -9,7 +9,7 @@ import { useAuth } from '../../hooks'
 
 
 const Navbar = () => {
-  const { user, setUser } = useAuth();
+  const { user, setUser, loading } = useAuth();
   return  (
     <header className="header">
       <nav className="nav">
@@ -26,41 +26,53 @@ const Navbar = () => {
             <Link to="/#" className="links__link">Services</Link>
           </li>
           <li className="links__item">
-            <Link to="/#" className="links__link">About us</Link>
+            <Link to="/about" className="links__link">About us</Link>
           </li>
         </ul>
-        {user && (
-          <ul className="buttons">
-            <li className="button__item">
-              <button className="btn__link btn__primary" onClick={async () => {
-                await signOut(firebaseAuth);
-                setUser(null);
-              }}>
-                <span>Log out</span>
-              </button>
-            </li>
-          </ul>
-        )}
-        {!user && (
+        {loading ? (
           <ul className="buttons">
             <li className="button__item">
               <Link to="/auth/login" className="btn__link btn__primary">
-                <span>
-                  <AccessKey fillColor="#fff" />
-                </span>
+                <span><AccessKey fillColor="#fff" /></span>
                 <span>Login</span>
               </Link>
             </li>
             <li className="button__item">
               <a href="/auth/register" className="btn__link btn__outline">
-                <span>
-                  <AccessKey fillColor="#3D55DF" />
-                </span>
+                <span><AccessKey fillColor="#3D55DF" /></span>
                 <span>Register</span>
               </a>
             </li>
           </ul>
-        )}
+        )
+          : user ? (
+            <ul className="buttons">
+              <li className="button__item">
+                <button className="btn__link btn__primary" onClick={async () => {
+                  await signOut(firebaseAuth);
+                  setUser(null);
+                }}>
+                  <span>Log out</span>
+                </button>
+              </li>
+            </ul>
+          ) : (
+            <ul className="buttons">
+              <li className="button__item">
+                <Link to="/auth/login" className="btn__link btn__primary">
+                  <span><AccessKey fillColor="#fff" /></span>
+                  <span>Login</span>
+                </Link>
+              </li>
+              <li className="button__item">
+                <a href="/auth/register" className="btn__link btn__outline">
+                  <span><AccessKey fillColor="#3D55DF" /></span>
+                  <span>Register</span>
+                </a>
+              </li>
+            </ul>
+          )
+        }
       </nav>
     </header>
   );
