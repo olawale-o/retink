@@ -5,11 +5,11 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AccessKey } from '../Svg';
 import './style.css';
-import { AuthContext } from '../../context/Auth';
+import { useAuth } from '../../hooks'
 
 
 const Navbar = () => {
-  const { user, setUser } = React.useContext(AuthContext);
+  const { user, setUser } = useAuth();
   return  (
     <header className="header">
       <nav className="nav">
