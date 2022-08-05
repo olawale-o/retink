@@ -18,7 +18,19 @@ export const signInWithGoogle = async () => {
 export const logInWithEmailAndPassword = async (email, password) => {
   try {
     const { user } = await signInWithEmailAndPassword(firebaseAuth, email, password);
-    return user;
+    if (user) {
+      const response = await post('user/login',
+        {
+          email: user.email,
+        },
+        {
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true,
+        }
+      );
+      return response;
+    }
+    return null;
   } catch(e) {
     throw new Error(e.code);
   }
