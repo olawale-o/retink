@@ -1,18 +1,13 @@
 import React from 'react';
 import { AuthContext } from '../../context';
-import google from '../../assets/google.png';
-const Form  = ({ onSubmit, setEmail, setPassword, btnName }) => {
-  const { continueWithGoogle, authError, loading } = React.useContext(AuthContext);
+import SocialAuth from '../SocialAuth';
+const Form  = ({ onSubmit, email, password, setEmail, setPassword, btnName }) => {
+  const { authError, loading } = React.useContext(AuthContext);
 
   return (
     <div className="form">
       <span className="error">{authError && authError}</span>
-      <button type="button" onClick={continueWithGoogle} className="google__button">
-        <span className="google">
-          <img src={google} alt="google" />
-        </span>
-        <span className="btn__text">Continue with Google</span>
-      </button>
+      <SocialAuth />
       <form onSubmit={onSubmit}>
         <div className="field">
             <input
@@ -21,6 +16,7 @@ const Form  = ({ onSubmit, setEmail, setPassword, btnName }) => {
             placeholder="Email"
             className="input"
             onChange={(e) => setEmail(e.target.value)}
+            value={email}
             required
             />
         </div>
@@ -31,6 +27,7 @@ const Form  = ({ onSubmit, setEmail, setPassword, btnName }) => {
             placeholder="******"
             className="input"
             onChange={(e) => setPassword(e.target.value)}
+            value={password}
             required
             />
         </div>

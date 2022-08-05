@@ -1,19 +1,29 @@
+import React from 'react';
 import AuthContext from './context';
+import { onAuthStateChanged } from 'firebase/auth';
+import { firebaseAuth } from '../../firebase-config';
 
-const AuthProvider = ({
-   value: {user, setUser, authError, loading, continueWithGoogle, onLogIn, setEmail, onRegister }, children
-  }) => {
+const AuthProvider = ({ children }) => {
+  const [auth, setAuth] = React.useState('');
+  const [loading, setLoading] = React.useState(false);
+  const [authError, setAuthError] = React.useState(null);
+  onAuthStateChanged(firebaseAuth, (currentUser) => {
+    console.log('onAuthStateChanged');
+    if (currentUser) {
+      setAuth(currentUser);
+      setAuthError(null);
+      setLoading(false);
+    }
+  });
   return (
     <AuthContext.Provider
       value={{
-        user,
-        setUser,
+        user: auth,
+        setUser: setAuth,
         authError,
+        setAuthError,
         loading,
-        continueWithGoogle,
-        login: onLogIn,
-        register: onRegister,
-        setEmail,
+        setLoading,
       }}
     >
       {children}
