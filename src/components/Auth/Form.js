@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthContext from '../../context';
+import { AuthContext } from '../../context';
 import google from '../../assets/google.png';
 const Form  = ({ onSubmit, setEmail, setPassword, btnName }) => {
   const { continueWithGoogle, authError, loading } = React.useContext(AuthContext);

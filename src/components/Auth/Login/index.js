@@ -1,5 +1,5 @@
 import React from 'react';
-import AuthContext from '../../../context';
+import { AuthContext } from '../../../context';
 import Form from '../Form';
 
 const Login = () => {

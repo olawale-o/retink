@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AccessKey } from '../Svg';
 import './style.css';
-import AuthContext from '../../context';
+import { AuthContext } from '../../context/Auth';
 
 
 const Navbar = () => {
