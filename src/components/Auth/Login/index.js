@@ -6,19 +6,21 @@ import { logInWithEmailAndPassword } from '../../../service/firebaseService';
 
 const Login = () => {
   const navigate = useNavigate();
-  const { setLoading, setAuthError } = React.useContext(AuthContext);
+  const { setLoading, setAuthError, setUser } = React.useContext(AuthContext);
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
   const onLogIn = async (e) => {
-    console.log('onLogIn');
     e.preventDefault();
     setLoading(true);
     try {
-      await logInWithEmailAndPassword(email, password);
+      const user = await logInWithEmailAndPassword(email, password);
       setEmail('');
       setPassword('');
-      navigate('/', { replace: true });
+      if (user) {
+        setUser(user);
+        navigate('/', { replace: true });
+      }
     } catch(e) {
       setLoading(false);
       if (e.message === 'auth/user-not-found') {
@@ -27,6 +29,8 @@ const Login = () => {
       if (e.message === 'auth/wrong-password') {
         setAuthError('Please provide valid credentials');
       }
+    } finally {
+      setLoading(false);
     }
   };
   return (
