@@ -2,13 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore'
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_GOOGLE_KEY,
-  authDomain: "riverpod-crime.firebaseapp.com",
-  projectId: "riverpod-crime",
-  storageBucket: "riverpod-crime.appspot.com",
-  messagingSenderId: "1029610132870",
-  appId: "1:1029610132870:web:c105ca16ed6f0754554807",
-  measurementId: "G-3MM2Z2TC8K"
+  apiKey: "AIzaSyAW_4pkXP0p-Ly7VpOlDmKeoF-Yk1VHen0",
+  authDomain: "mypitchhub-345be.firebaseapp.com",
+  projectId: "mypitchhub-345be",
+  storageBucket: "mypitchhub-345be.appspot.com",
+  messagingSenderId: "881108704488",
+  appId: "1:881108704488:web:5f331ea1927b4df7befd5d"
 };
 
 const app = initializeApp(firebaseConfig);
