@@ -1,6 +1,6 @@
 import React from 'react';
 import { signOut } from 'firebase/auth';
-import { auth } from '../../firebase-config';
+import { firebaseAuth } from '../../firebase-config';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png';
 import { AccessKey } from '../Svg';
@@ -33,7 +33,7 @@ const Navbar = () => {
           <ul className="buttons">
             <li className="button__item">
               <button className="btn__link btn__primary" onClick={async () => {
-                await signOut(auth);
+                await signOut(firebaseAuth);
                 setUser(null);
               }}>
                 <span>Log out</span>
