@@ -9,7 +9,7 @@ import { AuthContext } from '../../context/Auth';
 
 
 const Navbar = () => {
-  const { user, onUpdateUser } = React.useContext(AuthContext);
+  const { user, setUser } = React.useContext(AuthContext);
   return  (
     <header className="header">
       <nav className="nav">
@@ -34,7 +34,7 @@ const Navbar = () => {
             <li className="button__item">
               <button className="btn__link btn__primary" onClick={async () => {
                 await signOut(auth);
-                onUpdateUser(null);
+                setUser(null);
               }}>
                 <span>Log out</span>
               </button>

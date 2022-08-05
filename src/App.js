@@ -8,7 +8,8 @@ import Navbar from './components/Navbar';
 import Auth from './pages/Auth';
 import { Login, Register } from './components/Auth';
 import Home from './pages/Home';
-import AuthContext from './context';
+
+import { AuthProvider } from './context';
 import Services from './pages/Services';
 
 const queryClient = new QueryClient();
@@ -87,13 +88,11 @@ function App(){
   return (
     <QueryClientProvider client={queryClient}>
       <div className="App">
-        <AuthContext.Provider value={{
+        <AuthProvider value={{
           user,
+          setUser,
           authError,
           loading,
-          onUpdateUser: () => {
-            setUser(user);
-          },
           continueWithGoogle,
           login: onLogIn,
           register: onRegister,
@@ -112,7 +111,7 @@ function App(){
               </Route>
             </Route>
           </Routes>
-        </AuthContext.Provider>
+        </AuthProvider>
       </div>
     </QueryClientProvider>
   );
