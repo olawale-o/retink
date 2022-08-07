@@ -1,12 +1,12 @@
 import React from 'react';
-import { AuthContext } from '../../../context';
 import { useNavigate } from 'react-router-dom';
 import Form from '../Form';
 import { createUserAccount } from '../../../service/firebaseService';
+import { useAuth } from '../../../hooks';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { setLoading, authError, setAuthError } = React.useContext(AuthContext);
+  const { setLoading, authError, setAuthError } = useAuth();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 

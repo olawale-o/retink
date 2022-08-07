@@ -1,12 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import google from '../../assets/google.png';
-import { AuthContext } from '../../context';
+import { useAuth } from '../../hooks';
 import { signInWithGoogle } from '../../service/firebaseService';
 
 const SocialAuth = () => {
   const navigate = useNavigate();
-  const { setUser, setLoading } = React.useContext(AuthContext);
+  const { setUser, setLoading } = useAuth();
   const continueWithGoogle = async () => {
     setLoading(true);
     try {
