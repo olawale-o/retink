@@ -47,6 +47,9 @@ export const createUserAccount = async (email, password) => {
           uid: user.uid,
           provider_id: user.providerId,
           photo_url: user?.photoURL,
+        },{
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true,
         });
       return dbUser;
     }
