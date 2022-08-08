@@ -8,9 +8,7 @@ import Home from './pages/Home';
 
 import { AuthProvider } from './context';
 import Services from './pages/Services';
-import About from './pages/About';
-import RequireAuth from './pages/RequireAuth';
-import PersistAuth from './pages/PersistAuth';
+import { About, RequireAuth, PersistAuth } from './pages';
 
 const queryClient = new QueryClient();
 
