@@ -2,12 +2,12 @@ import { initializeApp } from "firebase/app";
 import { getFirestore } from 'firebase/firestore'
 import { getAuth, GoogleAuthProvider } from "firebase/auth";
 const firebaseConfig = {
-  apiKey: "AIzaSyAW_4pkXP0p-Ly7VpOlDmKeoF-Yk1VHen0",
-  authDomain: "mypitchhub-345be.firebaseapp.com",
-  projectId: "mypitchhub-345be",
-  storageBucket: "mypitchhub-345be.appspot.com",
-  messagingSenderId: "881108704488",
-  appId: "1:881108704488:web:5f331ea1927b4df7befd5d"
+  apiKey: process.env.REACT_APP_PITCHHUB_KEY,
+  authDomain: process.env.REACT_APP_PITCHHUB_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_PITCHHUB_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_PITCHHUB_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_PITCHHUB_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_PITCHHUB_APP_ID,
 };
 
 const app = initializeApp(firebaseConfig);
