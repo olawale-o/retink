@@ -12,7 +12,7 @@ export const axiosPrivate = axios.create({
 });
 
 export const post = async (url, data) =>  {
-  const response = await api.post(url, data);
+  const response = await api.post(url, data, { withCredentials: true });
   return response.data;
 };
 
