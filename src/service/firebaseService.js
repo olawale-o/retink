@@ -19,15 +19,7 @@ export const logInWithEmailAndPassword = async (email, password) => {
   try {
     const { user } = await signInWithEmailAndPassword(firebaseAuth, email, password);
     if (user) {
-      const response = await post('user/login',
-        {
-          email: user.email,
-        },
-        {
-          headers: { 'Content-Type': 'application/json' },
-          withCredentials: true,
-        }
-      );
+      const response = await post('user/login',{ email: user.email});
       return response;
     }
     return null;
