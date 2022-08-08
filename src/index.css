@@ -75,6 +75,13 @@ li {
   position: relative;
 }
 
+.link-button {
+  padding: 1rem 2rem;
+  background-color: #3D55DF;
+  color: #fff;
+  border-radius: 10px;
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

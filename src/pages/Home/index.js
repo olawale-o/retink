@@ -17,7 +17,7 @@ const getServices = async () => {
 };
 
 const Home = () => {
-  const { isLoading, data } = useQuery('services', getServices);
+  const { isLoading, data, isError, error } = useQuery('services', getServices);
 
   return (
     <div className="home">
@@ -59,19 +59,27 @@ const Home = () => {
       <div className="services">
         <div className="container">
           <h1 className="service__title">Our Services</h1>
-          <ul className="service__cards">
+          <div className='service-content'>
             {isLoading && <div className="loading" />}
-            {data && data.map((service) => (
-              <li className="service__card" key={service.id}>
-                <Link to={service.id} className="service__link">
-                  <div className="img__box">
-                    <img src={service.img_url} alt={service.name} />
-                  </div>
-                  <h6>{service.name}</h6>
-                </Link>
-              </li>
-            ))}
-          </ul>
+            {isError && error?.code === 'permission-denied' ?
+              <div className="error">
+                <Link to="/auth" className="link-button">Please login to continue</Link>
+              </div> :
+              <div className="error">{error?.message}</div>
+            }
+            <ul className="service__cards">
+              {data && data.map((service) => (
+                <li className="service__card" key={service.id}>
+                  <Link to={service.id} className="service__link">
+                    <div className="img__box">
+                      <img src={service.img_url} alt={service.name} />
+                    </div>
+                    <h6>{service.name}</h6>
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </div>
