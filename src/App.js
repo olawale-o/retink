@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import Navbar from './components/Navbar';
 import Auth from './pages/Auth';
@@ -8,6 +8,9 @@ import Home from './pages/Home';
 
 import { AuthProvider } from './context';
 import Services from './pages/Services';
+import About from './pages/About';
+import RequireAuth from './pages/RequireAuth';
+import PersistAuth from './pages/PersistAuth';
 
 const queryClient = new QueryClient();
 
@@ -22,9 +25,14 @@ function App(){
               <Route index path="/" element={(<Home />)} />
               <Route path=":id" element={(<Services />)} />
               <Route path="auth" element={(<Auth />)}>
-                <Route index path="" element={(<Login />)} />
+                <Route index element={(<Navigate to="login" />)} />
                 <Route path="login" element={(<Login />)} />
                 <Route path="register" element={(<Register />)} />
+              </Route>
+              <Route element={(<PersistAuth />)}>
+                <Route element={(<RequireAuth />)}>
+                  <Route path="about" element={(<About />)} />
+                </Route>
               </Route>
             </Route>
           </Routes>
