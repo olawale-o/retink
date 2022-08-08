@@ -4,7 +4,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { store } from "../../firebase-config";
 
 import './style.css';
-const getSevice = async (id) => {
+const getService = async (id) => {
   const docRef = doc(store, "retink_services", id);
   const docSnap = await getDoc(docRef);
   
@@ -16,16 +16,21 @@ const getSevice = async (id) => {
 
 const Services = () => {
   const { id } = useParams();
-  const { isLoading, data } = useQuery(['services', id], async () => {
-    const data = await getSevice(id);
-    return data;
-  });
+  const { isLoading, data, isError, error } = useQuery(
+    ['services', id],
+    async () => await getService(id),
+    { retry: false }
+  );
 
   return (
     <div className="service">
       <div className="container">
         <div className="service__content">
           {isLoading && <div className="loading" />}
+          {isError && error?.code === 'permission-denied' ?
+            <div className="error">Please login to continue</div> :
+            <div className="error">{error?.message}</div>
+          }
           {data && (
             <>
               <div className="service__img-box">
