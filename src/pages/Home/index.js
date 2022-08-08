@@ -62,7 +62,9 @@ const Home = () => {
           <div className='service-content'>
             {isLoading && <div className="loading" />}
             {isError && error?.code === 'permission-denied' ?
-              <div className="error">Please login to continue</div> :
+              <div className="error">
+                <Link to="/auth" className="link-button">Please login to continue</Link>
+              </div> :
               <div className="error">{error?.message}</div>
             }
             <ul className="service__cards">

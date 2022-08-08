@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { useQuery } from "react-query";
 import { doc, getDoc } from 'firebase/firestore';
 import { store } from "../../firebase-config";
@@ -28,7 +28,9 @@ const Services = () => {
         <div className="service__content">
           {isLoading && <div className="loading" />}
           {isError && error?.code === 'permission-denied' ?
-            <div className="error">Please login to continue</div> :
+            <div className="error">
+              <Link to="/auth" className="link-button">Please login to continue</Link>
+            </div> :
             <div className="error">{error?.message}</div>
           }
           {data && (
