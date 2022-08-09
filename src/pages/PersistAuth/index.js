@@ -29,7 +29,7 @@ const PersistAuth = () => {
 
   return (
     <>
-      {isLoading ? (<h1>isLoading.....</h1>) : <Outlet />};
+      {isLoading ? (<h1>isLoading.....</h1>) : <Outlet />}
     </>
   );
 };
