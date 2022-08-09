@@ -1,0 +1,53 @@
+.service-form {
+  max-width: 300px;
+  max-height: 300px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.field {
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.input:focus-within {
+  border: 1px solid #000;
+}
+
+.textarea {
+  width: 100%;
+  height: 200px;
+  padding: 1rem 0.5rem;
+  resize: none;
+  outline: none;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.textarea:focus-within {
+  border: 1px solid #000;
+}
+
+.button {
+  width: 100%;
+  padding: 1rem 0.5rem;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 1rem;
+  cursor: pointer;
+  font-size: 1.8rem;
+  transition: all 0.3s ease-in-out;
+}
