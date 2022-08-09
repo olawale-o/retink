@@ -235,6 +235,10 @@
     width: 70%;
   }
 
+  .service-content {
+    position: relative;
+  }
+
   .service__title {
     font-size: 3.4rem;
   }
