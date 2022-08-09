@@ -7,7 +7,7 @@ import { Login, Register } from './components/Auth';
 import Home from './pages/Home';
 
 import { AuthProvider } from './context';
-import { About, RequireAuth, PersistAuth, Services, ServiceDetail } from './pages';
+import { About, RequireAuth, PersistAuth, Services, ServiceDetail, NewService } from './pages';
 
 const queryClient = new QueryClient();
 
@@ -28,7 +28,8 @@ function App(){
               <Route element={(<PersistAuth />)}>
                 <Route element={(<RequireAuth />)}>
                   <Route path="services" element={(<Services />)}>
-                    <Route path=':id' element={(<ServiceDetail />)} />
+                    <Route path="new" element={(<NewService />)} />
+                    <Route path=":id" element={(<ServiceDetail />)} />
                   </Route>
                   <Route path="about" element={(<About />)} />
                 </Route>
