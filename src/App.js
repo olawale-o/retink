@@ -7,8 +7,7 @@ import { Login, Register } from './components/Auth';
 import Home from './pages/Home';
 
 import { AuthProvider } from './context';
-import Services from './pages/Services';
-import { About, RequireAuth, PersistAuth } from './pages';
+import { About, RequireAuth, PersistAuth, Services, ServiceDetail } from './pages';
 
 const queryClient = new QueryClient();
 
@@ -21,7 +20,6 @@ function App(){
           <Routes>
             <Route path="/">
               <Route index path="/" element={(<Home />)} />
-              <Route path=":id" element={(<Services />)} />
               <Route path="auth" element={(<Auth />)}>
                 <Route index element={(<Navigate to="login" />)} />
                 <Route path="login" element={(<Login />)} />
@@ -29,6 +27,9 @@ function App(){
               </Route>
               <Route element={(<PersistAuth />)}>
                 <Route element={(<RequireAuth />)}>
+                  <Route path="services" element={(<Services />)}>
+                    <Route path=':id' element={(<ServiceDetail />)} />
+                  </Route>
                   <Route path="about" element={(<About />)} />
                 </Route>
               </Route>
