@@ -12,15 +12,19 @@ const NewService = () => {
 
   const queryClient = useQueryClient();
   React.useEffect(() => {
-    let isMounted = true;
+    const controller = new AbortController();
     const getSignature = async () => {
-      axiosPrivate.get('/token/get-media-upload-signature', {})
+      axiosPrivate.get('/token/get-media-upload-signature', {}, { signal: controller.signal })
       .then((response) => {
         console.log(response.data);
-        isMounted && setSignatureResponse(response.data);
+        setSignatureResponse((prev) => ({ ...prev, ...response.data }));
       })
-      .catch(error => {
-        console.log(error);
+      .catch((error) => {
+        if (error.name === 'AbortError') {
+          console.log('Request aborted');
+        } else {
+          console.log(error);
+        }
       });
     }
     getSignature();
@@ -28,8 +32,8 @@ const NewService = () => {
       getSignature();
     }, 60 * 60 * 60);
     return () => {
-      isMounted = false;
       clearInterval(setSignatureInterval);
+      controller.abort();
     }
   }, []);
 
