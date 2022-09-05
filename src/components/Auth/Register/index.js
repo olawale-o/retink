@@ -6,7 +6,7 @@ import { useAuth } from '../../../hooks';
 
 const Register = () => {
   const navigate = useNavigate();
-  const { setLoading, authError, setAuthError } = useAuth();
+  const { setLoading, authError, setAuthError, setUser } = useAuth();
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -14,7 +14,9 @@ const Register = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      await createUserAccount(email, password);
+      const user = await createUserAccount(email, password);
+      setLoading(false);
+      setUser(user);
       navigate('/', { replace: true });
     } catch(e) {
       setLoading(false);
