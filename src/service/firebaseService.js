@@ -19,7 +19,7 @@ export const logInWithEmailAndPassword = async (email, password) => {
   try {
     const { user } = await signInWithEmailAndPassword(firebaseAuth, email, password);
     if (user) {
-      const response = await post('user/login',{ email: user.email});
+      const response = await post('auth/login',{ email: user.email});
       return response;
     }
     return null;
@@ -33,12 +33,12 @@ export const createUserAccount = async (email, password) => {
     const { user } = await createUserWithEmailAndPassword(firebaseAuth, email, password);
     if (user) {
       const dbUser = await post(
-        'user/signup', {
+        'auth/signup', {
           email: user.email,
-          full_name: user?.displayName || 'full name',
+          fullName: user?.displayName || 'full name',
           uid: user.uid,
-          provider_id: user.providerId,
-          photo_url: user?.photoURL,
+          providerId: user.providerId,
+          photoUrl: user?.photoURL,
         },{
           headers: { 'Content-Type': 'application/json' },
           withCredentials: true,
