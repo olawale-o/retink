@@ -1,19 +1,17 @@
 import React from 'react';
 import AuthContext from './context';
-// import { onAuthStateChanged } from 'firebase/auth';
+// import { getAuth } from 'firebase/auth';
 // import { firebaseAuth } from '../../firebase-config';
-// onAuthStateChanged(firebaseAuth, (currentUser) => {
-//   if (currentUser) {
-//     setAuth(currentUser);
-//     setAuthError(null);
-//     setLoading(false);
-//   }
-// });
+// onAuthStateChanged(firebaseAuth, async (currentUser) => {
+//   // const token = await currentUser?.getIdToken();
+//   // setIdToken((prev) => ({ ...prev, idToken: token, }));
+// });  
 
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = React.useState('');
   const [loading, setLoading] = React.useState(false);
   const [authError, setAuthError] = React.useState(null);
+  const [idToken, setIdToken] = React.useState(null);
   return (
     <AuthContext.Provider
       value={{
@@ -23,6 +21,8 @@ const AuthProvider = ({ children }) => {
         setAuthError,
         loading,
         setLoading,
+        idToken,
+        setIdToken,
       }}
     >
       {children}
