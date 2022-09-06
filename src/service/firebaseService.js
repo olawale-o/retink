@@ -9,7 +9,20 @@ import { post } from '../api/axios';
 export const signInWithGoogle = async () => {
   try {
     const { user } = await signInWithPopup(firebaseAuth, googleProvider);
-    return user;
+    if (user) {
+      const dbUser = await post(
+        'auth/signup', {
+          email: user.email,
+          fullName: user?.displayName || 'full name',
+          uid: user.uid,
+          providerId: user.providerId,
+          photoUrl: user?.photoURL,
+        },{
+          headers: { 'Content-Type': 'application/json' },
+          withCredentials: true,
+        });
+      return dbUser;
+    }
   } catch(e) {
     throw new Error(e.code);
   }
